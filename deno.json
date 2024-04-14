@@ -1,0 +1,37 @@
+{
+    "name": "@nihility-io/flowbite-icons-preact",
+    "version": "0.1.0",
+    "exports": "./mod.ts",
+    "lock": false,
+    "tasks": {
+        "build": "deno run -A build.ts"
+    },
+    "imports": {
+        "preact": "https://esm.sh/preact@10.20.2",
+        "preact/": "https://esm.sh/preact@10.20.2/"
+    },
+    "lint": {
+        "rules": {
+            "tags": [
+                "fresh",
+                "recommended"
+            ]
+        }
+    },
+    "fmt": {
+        "useTabs": true,
+        "lineWidth": 120,
+        "indentWidth": 4,
+        "semiColons": false,
+        "singleQuote": false,
+        "proseWrap": "preserve"
+    },
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "https://esm.sh/preact@10.20.2",
+        "lib": [
+            "deno.window",
+            "deno.unstable"
+        ]
+    }
+}
