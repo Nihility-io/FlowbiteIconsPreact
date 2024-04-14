@@ -64,7 +64,7 @@ Deno.remove(folderName, { recursive: true })
 
 // Create in index.ts file with exports all generated components
 const indexFile = Object.entries(icons)
-	.map(([name, path]) => `export { default as ${name} } from "./${path}"`).join("\n")
+	.map(([name, path]) => `export { default as ${name} } from "icons/${path}"`).join("\n")
 
 // Write index.js
 await Deno.writeTextFile(path.join("icons", "index.tsx"), indexFile)

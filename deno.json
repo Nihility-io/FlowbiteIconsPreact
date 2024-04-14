@@ -8,7 +8,8 @@
     },
     "imports": {
         "preact": "npm:preact@10.20.2",
-        "preact/": "npm:/preact@10.20.2/"
+        "preact/": "npm:/preact@10.20.2/",
+        "icons/": "./icons/"
     },
     "lint": {
         "rules": {

@@ -1,1 +1,1 @@
-export * as default from "./icons/index.tsx"
+export * as default from "icons/index.tsx"
