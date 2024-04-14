@@ -52,7 +52,7 @@ for await (const f of walk(folderName, { exts: [".svg"] })) {
 
 	// Turn the SVG into a TSX component and allow overwriting props
 	const componentTSX = `import { JSX } from "preact"
-export default (props: JSX.HTMLAttributes<SVGSVGElement>) => (
+export default (props: JSX.HTMLAttributes<SVGSVGElement>): JSX.Element => (
 ${svg.replace(/<svg[^>]*>/, `<svg ${/<svg([^>]*)>/.exec(svg)![1]} {...props}>`)})`
 
 	// Write TSX

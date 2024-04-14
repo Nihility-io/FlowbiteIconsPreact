@@ -7,8 +7,8 @@
         "build": "deno run -A build.ts"
     },
     "imports": {
-        "preact": "https://esm.sh/preact@10.20.2",
-        "preact/": "https://esm.sh/preact@10.20.2/"
+        "preact": "npm:preact@10.20.2",
+        "preact/": "npm:/preact@10.20.2/"
     },
     "lint": {
         "rules": {
@@ -28,7 +28,7 @@
     },
     "compilerOptions": {
         "jsx": "react-jsx",
-        "jsxImportSource": "https://esm.sh/preact@10.20.2",
+        "jsxImportSource": "npm:preact@10.20.2",
         "lib": [
             "deno.window",
             "deno.unstable"
