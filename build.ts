@@ -67,4 +67,4 @@ Deno.remove(folderName, { recursive: true })
 const indexFile = Record.mapToArray(icons, (name, path) => `export { default as ${name} } from "./${path}"`).join("\n")
 
 // Write index.js
-await Deno.writeTextFile(path.join("icons", "index.tsx"), indexFile)
+await Deno.writeTextFile(path.join("icons", "index.ts"), indexFile)
