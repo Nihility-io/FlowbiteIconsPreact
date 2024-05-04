@@ -1,4 +1,5 @@
 import { decompress } from "https://deno.land/x/zip@v1.2.5/mod.ts"
+import Record from "@nihility-io/record"
 import { walk } from "jsr:@std/fs"
 import * as path from "jsr:@std/path"
 
@@ -38,8 +39,8 @@ for await (const f of walk(folderName, { exts: [".svg"] })) {
 	// Determine a component name
 	const [type, group, file] = trimPrefix(f.path, folderName + "/src/").split(path.SEPARATOR)
 	const name = path.parse(file).name
-	const p = path.join(type, group, name + ".tsx")
-	const componentName = snakeToPascal(`${group}_${name}_${type}`.replaceAll("-", "_").replaceAll(":", "_"))
+	const p = path.join(type.replaceAll(":", "-"), group.replaceAll(":", "-"), name + ".tsx")
+	const componentName = snakeToPascal(`${name}_${type}`.replaceAll("-", "_").replaceAll(":", "_"))
 
 	// Add tsx path to a temporary record
 	icons[componentName] = p
@@ -48,11 +49,11 @@ for await (const f of walk(folderName, { exts: [".svg"] })) {
 	const svg = await Deno.readTextFile(f.path)
 
 	// Create the target directory
-	await Deno.mkdir(path.join("icons", type.replaceAll(":", "-"), group), { recursive: true })
+	await Deno.mkdir(path.join("icons", type.replaceAll(":", "-"), group.replaceAll(":", "-")), { recursive: true })
 
 	// Turn the SVG into a TSX component and allow overwriting props
 	const componentTSX = `import { JSX } from "preact"
-export default (props: JSX.HTMLAttributes<SVGSVGElement>): JSX.Element => (
+export default (props: JSX.IntrinsicElements["svg"]): JSX.Element => (
 ${svg.replace(/<svg[^>]*>/, `<svg ${/<svg([^>]*)>/.exec(svg)![1]} {...props}>`)})`
 
 	// Write TSX
@@ -63,8 +64,7 @@ ${svg.replace(/<svg[^>]*>/, `<svg ${/<svg([^>]*)>/.exec(svg)![1]} {...props}>`)}
 Deno.remove(folderName, { recursive: true })
 
 // Create in index.ts file with exports all generated components
-const indexFile = Object.entries(icons)
-	.map(([name, path]) => `export { default as ${name} } from "icons/${path}"`).join("\n")
+const indexFile = Record.mapToArray(icons, (name, path) => `export { default as ${name} } from "./${path}"`).join("\n")
 
 // Write index.js
 await Deno.writeTextFile(path.join("icons", "index.tsx"), indexFile)

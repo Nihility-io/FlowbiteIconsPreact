@@ -1,38 +1,39 @@
 {
-    "name": "@nihility-io/flowbite-icons-preact",
-    "version": "0.1.0",
-    "exports": "./mod.ts",
-    "lock": false,
-    "tasks": {
-        "build": "deno run -A build.ts"
-    },
-    "imports": {
-        "preact": "npm:preact@10.20.2",
-        "preact/": "npm:/preact@10.20.2/",
-        "icons/": "./icons/"
-    },
-    "lint": {
-        "rules": {
-            "tags": [
-                "fresh",
-                "recommended"
-            ]
-        }
-    },
-    "fmt": {
-        "useTabs": true,
-        "lineWidth": 120,
-        "indentWidth": 4,
-        "semiColons": false,
-        "singleQuote": false,
-        "proseWrap": "preserve"
-    },
-    "compilerOptions": {
-        "jsx": "react-jsx",
-        "jsxImportSource": "npm:preact@10.20.2",
-        "lib": [
-            "deno.window",
-            "deno.unstable"
-        ]
-    }
+	"name": "@nihility-io/flowbite-icons-preact",
+	"version": "0.1.0",
+	"exports": "./mod.ts",
+	"lock": false,
+	"tasks": {
+		"build": "deno run -A build.ts"
+	},
+	"imports": {
+		"@nihility-io/record": "jsr:@nihility-io/record@^0.1.1",
+		"icons/": "./icons/",
+		"preact": "npm:preact@10.20.2",
+		"preact/": "npm:/preact@10.20.2/"
+	},
+	"lint": {
+		"rules": {
+			"tags": [
+				"fresh",
+				"recommended"
+			]
+		}
+	},
+	"fmt": {
+		"useTabs": true,
+		"lineWidth": 120,
+		"indentWidth": 4,
+		"semiColons": false,
+		"singleQuote": false,
+		"proseWrap": "preserve"
+	},
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "npm:preact@10.20.2",
+		"lib": [
+			"deno.window",
+			"deno.unstable"
+		]
+	}
 }
