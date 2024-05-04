@@ -1,7 +1,7 @@
 {
 	"name": "@nihility-io/flowbite-icons-preact",
-	"version": "0.1.0",
-	"exports": "./mod.ts",
+	"version": "0.1.1",
+	"exports": "./icons/index.ts",
 	"lock": false,
 	"tasks": {
 		"build": "deno run -A build.ts"

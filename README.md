@@ -5,7 +5,7 @@ This module projects the [Flowbite icon](https://github.com/themesberg/flowbite-
 
 ## Usage
 ```tsx
-import Icons from "jsr:@nihility-io/flowbite-icons-preact"
+import * as Icons from "jsr:@nihility-io/flowbite-icons-preact"
 
 const MyComponent = () => (
     <div>
